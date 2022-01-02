@@ -1,5 +1,6 @@
 import 'package:dayofflutter/pages/home_page.dart';
 import 'package:dayofflutter/pages/login_page.dart';
+import 'package:dayofflutter/util/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -24,8 +25,9 @@ class MyApp extends StatelessWidget {
       // initialRoute: "/home",
 
       routes: {
-        "/": (context) => LoginPage(),
-        "/home": (context) => HomePage(),
+        "/": (context) => const LoginPage(),
+        MyRoutes.homeRoutes: (context) => const HomePage(),
+        MyRoutes.loginRoutes: (context) => const LoginPage()
       },
     );
   }
