@@ -1,8 +1,16 @@
 import 'package:dayofflutter/util/routes.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+
+  String name = "";
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +24,8 @@ class LoginPage extends StatelessWidget {
               child: Image.asset(
                 "assets/images/login.png",
               )),
-          const Text(
-            "Welcome",
+           Text(
+            "Welcome $name",
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -36,6 +44,13 @@ class LoginPage extends StatelessWidget {
                     hintText: "Enter Name",
                     labelText: "Name",
                   ),
+                  onChanged: (value)
+                  {
+                    name = value;
+                    setState(() {
+                      
+                    });
+                  },
                 ),
                 const SizedBox(
                   height: 10.0,
