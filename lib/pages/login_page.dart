@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 300,
               width: 300,
               child: Image.asset(
-                "assets/images/login.png",
+                "assets/images/hey.png",
               )),
           Text(
             "Welcome $name",
@@ -63,39 +63,40 @@ class _LoginPageState extends State<LoginPage> {
                   height: 30.0,
                 ),
 
-                InkWell(
-                  onTap: () async {
-                    setState(() {
-                      changeButton = true;
-                    });
-                    await Future.delayed(Duration(seconds: 1));
-                    Navigator.pushNamed(context, MyRoutes.homeRoutes);
-                  },
-                  child: AnimatedContainer(
-                    duration: Duration(seconds: 1),
-                    width: changeButton ? 50 : 150.0,
-                    height: 50,
-                    alignment: Alignment.center,
-                    child: changeButton
-                        ? const Icon(
-                            Icons.done,
-                            color: Colors.white,
-                          )
-                        : const Text(
-                            "Login",
-                            style: TextStyle(
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),
-                    decoration: BoxDecoration(
-                        color: Colors.deepPurple,
-                        // shape:
-                        // changeButton ? BoxShape.circle : BoxShape.rectangle,
-                        borderRadius:
-                            BorderRadius.circular(changeButton ? 50 : 8.0)),
-                  ),
-                )
+                Material(
+                    color: Colors.deepPurple,
+                    borderRadius:
+                        BorderRadius.circular(changeButton ? 50 : 8.0),
+                    child: InkWell(
+                      onTap: () async {
+                        setState(() {
+                          changeButton = true;
+                        });
+                        await Future.delayed(Duration(seconds: 1));
+                        await Navigator.pushNamed(context, MyRoutes.homeRoutes);
+                        setState(() {
+                          changeButton = false;
+                        });
+                      },
+                      child: AnimatedContainer(
+                        duration: Duration(seconds: 1),
+                        width: changeButton ? 50 : 150.0,
+                        height: 50,
+                        alignment: Alignment.center,
+                        child: changeButton
+                            ? const Icon(
+                                Icons.done,
+                                color: Colors.white,
+                              )
+                            : const Text(
+                                "Login",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                      ),
+                    ))
 
                 // ElevatedButton(
                 //     style: TextButton.styleFrom(minimumSize: Size(150.0, 50.0)),
